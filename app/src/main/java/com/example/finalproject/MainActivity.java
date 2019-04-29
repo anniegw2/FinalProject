@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         //set activity_main on current screen
         setContentView(R.layout.activity_main);
 
+        final News[] myNews = {new News()};
+        final Tasks myTasks = new Tasks();
+
         DatePicker simpleDatePicker = findViewById(R.id.simpleDatePicker); // initiate a date picker
         simpleDatePicker.setCalendarViewShown(false); // set false value for the calendar shown function
 
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
+                myNews[0] = myTasks.doInBackground();
+                System.out.println(myNews);
                 setContentView(R.layout.results_main);
             }
         });
@@ -84,13 +89,6 @@ public class MainActivity extends AppCompatActivity {
         //populateListView();
     }
 
-//    private void populateListView() {
-//        String[] myNews = {"New York Times", "The Chronicles", "ABC News"};
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.search_main, myNews);
-//        ListView newsList = (ListView) findViewById(R.id.newsListView);
-//        newsList.setAdapter(adapter);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
